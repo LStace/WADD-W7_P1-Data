@@ -1,4 +1,61 @@
 /** YOUR DATA STRUCTURE HERE */
+class Question{
+    #quesionText
+    #answer
+
+    constructor(){
+        let firstInt = Math.floor((Math.random() * 10))
+        let secondInt = Math.floor((Math.random() * 10))
+
+        let operator = ["+", "-", "*", "/"][Math.floor((Math.random() * 4))]
+
+        this.#quesionText = `${firstInt} ${operator} ${secondInt}`
+
+        switch(operator){
+            case("+"):
+                this.#answer = firstInt + secondInt;
+                break;
+
+            case("-"):
+                this.#answer = firstInt - secondInt;
+                break;
+
+            case("*"):
+                this.#answer = firstInt * secondInt;
+                break;
+
+            case("/"):
+                this.#answer = firstInt / secondInt;
+                break;
+
+            default:
+                break;
+        }
+
+        this.#answer = Math.round(this.#answer * 100) / 100
+
+    }
+
+    getText(){
+        return this.#quesionText;
+    }
+
+    checkAnswer(answer){
+        console.log(answer);
+        console.log(this.#answer);
+        return answer == this.#answer;
+    }
+
+    getFeedbackForAnswer(answer){
+        if (this.checkAnswer(answer)){
+            return "right"
+        }
+
+        else{
+            return "wrong"
+        }
+    }
+}
 
 /** Do not edit below this line! The following code generates and shows questions, and tracks correct answers */
 
